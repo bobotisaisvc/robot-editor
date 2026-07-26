@@ -1,6 +1,5 @@
-streamlit
+ streamlit
    moviepy==1.0.3
    decorator==4.4.2
    imageio-ffmpeg
    Pillow==9.5.0
-   openai-whisper
