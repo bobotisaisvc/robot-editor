@@ -14,7 +14,19 @@ st.write("Upload video kamu, robot akan otomatis: resize ke format vertikal, tam
 # ==== INPUT DARI USER ====
 video_file = st.file_uploader("1. Upload video (.mp4 / .mov)", type=["mp4", "mov"])
 musik_file = st.file_uploader("2. (Opsional) Upload musik latar (.mp3)", type=["mp3"])
-pakai_caption = st.checkbox("Tambahkan auto-caption dari suara (proses lebih lama)", value=False)
+
+try:
+    import whisper  # noqa: F401
+    WHISPER_TERSEDIA = True
+except ImportError:
+    WHISPER_TERSEDIA = False
+
+if WHISPER_TERSEDIA:
+    pakai_caption = st.checkbox("Tambahkan auto-caption dari suara (proses lebih lama)", value=False)
+else:
+    st.info("Fitur auto-caption belum aktif di versi ringan ini (supaya instalasi lebih stabil). Resize video & musik latar tetap berfungsi normal.")
+    pakai_caption = False
+
 proses_btn = st.button("🚀 Proses Video", type="primary", disabled=(video_file is None))
 
 def buat_caption(video_path):
