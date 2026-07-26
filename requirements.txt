@@ -1,5 +1,5 @@
- streamlit
-   moviepy==1.0.3
-   decorator==4.4.2
-   imageio-ffmpeg
-   Pillow==9.5.0
+streamlit
+moviepy==1.0.3
+decorator<5
+imageio-ffmpeg
+Pillow<10
